@@ -1,7 +1,13 @@
 // Підключаю вбудований модуль fs у Node.js для роботи з файловою системою
 const fs = require('fs');
 // Підключаю встановлену бібліотеку commander для роботи з аргументами командного рядка
-const {program} = require('commander');
+let program;
+try {
+  program = require('commander').program;
+} catch (error) {
+  console.error('Error: Please, install the "commander" package by running "npm install"');
+  process.exit(1);
+}
 
 // Описую опції (параметри), які може приймати наша програма
 program
